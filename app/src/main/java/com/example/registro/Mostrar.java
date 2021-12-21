@@ -21,21 +21,15 @@ public class Mostrar extends AppCompatActivity {
 
 
 
-        RegistrosBD registrosBD = new RegistrosBD(getApplicationContext());
+
 
         recyclerViewRegistro=(RecyclerView) findViewById(R.id.recyclerDatos);
         recyclerViewRegistro.setLayoutManager(new LinearLayoutManager(this));
 
+        RegistrosBD registrosBD = new RegistrosBD(getApplicationContext());
 
-
-        adaptadorRegistro=new RecyclerViewAdaptador(Obtenerdatos());
+        adaptadorRegistro=new RecyclerViewAdaptador(registrosBD.mostrarDatos());
         recyclerViewRegistro.setAdapter(adaptadorRegistro);
     }
 
-    public List<ModeloDatos> Obtenerdatos(){
-        List<ModeloDatos> rdatos=new ArrayList<>();
-        rdatos.add(new ModeloDatos("codigo","nombre","apellido","cell","direccion","nota",R.drawable.logo));
-
-        return rdatos;
-    }
 }

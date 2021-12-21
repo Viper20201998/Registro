@@ -47,7 +47,7 @@ public class RegistrosBD extends SQLiteOpenHelper {
         List<ModeloDatos> rdatos=new ArrayList<>();
         if (cursor.moveToFirst()){
             do {
-                rdatos.add(new ModeloDatos(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4)));
+                rdatos.add(new ModeloDatos(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),R.drawable.logo));
             }while (cursor.moveToNext());
         }
         return rdatos;

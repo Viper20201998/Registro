@@ -4,8 +4,7 @@ public class ModeloDatos {
     private String codigo,nombre,apellido,numcell,direccion,nota;
     private int imgLogo;
 
-    public ModeloDatos(String s1, String cursorString1, String string1, String s, String cursorString, String string) {
-    }
+
 
     public ModeloDatos(String codigo, String nombre, String apellido, String numcell, String direccion, String nota, int imgLogo) {
         this.codigo = codigo;
@@ -16,6 +15,8 @@ public class ModeloDatos {
         this.nota = nota;
         this.imgLogo = imgLogo;
     }
+
+
 
 
     public String getCodigo() {
