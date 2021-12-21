@@ -41,17 +41,18 @@ public class RegistrosBD extends SQLiteOpenHelper {
         }
     }
 
-    public List<ModeloDatos> mostrardatos(){
+    public List<ModeloDatos> mostrarDatos(){
         SQLiteDatabase bd=getReadableDatabase();
-        Cursor cursor=bd.rawQuery("SELECT * FROM DATOS", null);
-        List<ModeloDatos> datos2=new ArrayList<>();
+        Cursor cursor=bd.rawQuery("SELECT * FROM DATOS",null);
+        List<ModeloDatos> rdatos=new ArrayList<>();
         if (cursor.moveToFirst()){
             do {
-                datos2.add(new ModeloDatos(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3),cursor.getString(4),cursor.getString(5)));
+                rdatos.add(new ModeloDatos(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4)));
             }while (cursor.moveToNext());
         }
-        return datos2;
+        return rdatos;
     }
-
-
 }
+
+
+
