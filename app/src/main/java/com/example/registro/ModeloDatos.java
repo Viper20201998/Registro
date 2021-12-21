@@ -4,7 +4,7 @@ public class ModeloDatos {
     private String codigo,nombre,apellido,numcell,direccion,nota;
     private int imgLogo;
 
-    public ModeloDatos() {
+    public ModeloDatos(String s1, String cursorString1, String string1, String s, String cursorString, String string) {
     }
 
     public ModeloDatos(String codigo, String nombre, String apellido, String numcell, String direccion, String nota, int imgLogo) {
