@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     EditText edtID, edtNombre, edtApellido, edtCell, edtDireccion, edtNota;
-    Button btnAgregar, btnMostrar;
+    Button btnAgregar, btnMostrar, btnbuscar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         edtNota=(EditText) findViewById(R.id.edtNota);
         btnAgregar=(Button) findViewById(R.id.btnAgregar);
         btnMostrar=(Button) findViewById(R.id.btnMostrar);
+        btnbuscar=(Button) findViewById(R.id.btnBuscar);
 
         final RegistrosBD registrosBD=new RegistrosBD(getApplicationContext());
 
@@ -49,6 +50,20 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,Mostrar.class);
                 startActivity(intent);
+            }
+        });
+
+
+        btnbuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ModeloDatos rdato=new ModeloDatos();
+                registrosBD.buscar(rdato,edtID.getText().toString());
+                edtNombre.setText(rdato.getNombre());
+                edtApellido.setText(rdato.getApellido());
+                edtCell.setText(rdato.getNumcell());
+                edtDireccion.setText(rdato.getDireccion());
+                edtNota.setText(rdato.getNota());
             }
         });
 

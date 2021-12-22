@@ -52,6 +52,23 @@ public class RegistrosBD extends SQLiteOpenHelper {
         }
         return rdatos;
     }
+
+
+    public void buscar(ModeloDatos rdato, String codigo){
+        SQLiteDatabase bd=getReadableDatabase();
+        Cursor cursor=bd.rawQuery("SELECT * FROM DATOS WHERE CODIGO='"+codigo+"'",null);
+        if (cursor.moveToFirst()){
+            do {
+                rdato.setNombre(cursor.getString(1));
+                rdato.setApellido(cursor.getString(2));
+                rdato.setNumcell(cursor.getString(3));
+                rdato.setDireccion(cursor.getString(4));
+                rdato.setNota(cursor.getString(5));
+            }while (cursor.moveToNext());
+        }
+    }
+
+
 }
 
 
