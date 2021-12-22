@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     EditText edtID, edtNombre, edtApellido, edtCell, edtDireccion, edtNota;
-    Button btnAgregar, btnMostrar, btnbuscar;
+    Button btnAgregar, btnMostrar, btnbuscar, btneditar,btneliminar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         btnAgregar=(Button) findViewById(R.id.btnAgregar);
         btnMostrar=(Button) findViewById(R.id.btnMostrar);
         btnbuscar=(Button) findViewById(R.id.btnBuscar);
+        btneditar=(Button) findViewById(R.id.btnEditar);
+        btneliminar=(Button) findViewById(R.id.btnEliminar);
 
         final RegistrosBD registrosBD=new RegistrosBD(getApplicationContext());
 
@@ -64,6 +66,23 @@ public class MainActivity extends AppCompatActivity {
                 edtCell.setText(rdato.getNumcell());
                 edtDireccion.setText(rdato.getDireccion());
                 edtNota.setText(rdato.getNota());
+            }
+        });
+
+
+        btneditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                registrosBD.actualizar(edtID.getText().toString(),edtNombre.getText().toString(),edtApellido.getText().toString(),edtCell.getText().toString(),edtDireccion.getText().toString(),edtNota.getText().toString());
+                Toast.makeText(getApplicationContext(),"Successfully updated",Toast.LENGTH_LONG).show();
+            }
+        });
+
+        btneliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                registrosBD.eliminar(edtID.getText().toString());
+                Toast.makeText(getApplicationContext(),"Successfully removed",Toast.LENGTH_LONG).show();
             }
         });
 

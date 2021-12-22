@@ -69,6 +69,22 @@ public class RegistrosBD extends SQLiteOpenHelper {
     }
 
 
+    public void actualizar(String codigo, String nombre, String apellido, String telefono, String direccion, String nota) {
+        SQLiteDatabase bd=getWritableDatabase();
+        if (bd!=null){
+            bd.execSQL("UPDATE DATOS SET NOMBRE='"+nombre+"',APELLIDO='"+apellido+"',CELL='"+telefono+"',DIRECCION='"+direccion+"',NOTA='"+nota+"' WHERE CODIGO='"+codigo+"'");
+            bd.close();
+        }
+    }
+
+    public void eliminar(String codigo) {
+        SQLiteDatabase bd=getWritableDatabase();
+        if (bd!=null){
+            bd.execSQL("DELETE FROM DATOS WHERE CODIGO='"+codigo+"'");
+            bd.close();
+        }
+    }
+
 }
 
 
